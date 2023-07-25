@@ -16,27 +16,27 @@ class ChatGPT:
     self.system_role_content = os.getenv('OPENAI_SYSTEM_ROLE_CONTENT', default = 'You are a cat.')
 
   def get_response(self):
-    response = openai.ChatCompletion.create(
-      model=self.model,
-      messages=[
-        {
-          'role': 'user',
-          'content': self.system_role_content,
-        }
-      ],
-      temperature=self.temperature,
-      frequency_penalty=self.frequency_penalty,
-      presence_penalty=self.presence_penalty,
-      max_tokens=self.max_tokens
-    )
-    # response = openai.Completion.create(
+    # response = openai.ChatCompletion.create(
     #   model=self.model,
-    #   prompt=self.prompt.generate_prompt(),
+    #   messages=[
+    #     {
+    #       'role': 'user',
+    #       'content': self.system_role_content,
+    #     }
+    #   ],
     #   temperature=self.temperature,
     #   frequency_penalty=self.frequency_penalty,
     #   presence_penalty=self.presence_penalty,
     #   max_tokens=self.max_tokens
     # )
+    response = openai.Completion.create(
+      model=self.model,
+      prompt=self.prompt.generate_prompt(),
+      temperature=self.temperature,
+      frequency_penalty=self.frequency_penalty,
+      presence_penalty=self.presence_penalty,
+      max_tokens=self.max_tokens
+    )
     return response['choices'][0]['text'].strip()
 
   def add_msg(self, text):
