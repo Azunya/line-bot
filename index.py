@@ -33,7 +33,7 @@ chatgpt35_system_role_play = os.getenv('OPENAI_SYSTEM_ROLE_PLAY', default = 'You
 
 app = Flask(__name__)
 chatgpt = ChatGPT()
-chatgpt35 = ChatGPT35(n=2, max_tokens=1024)
+chatgpt35 = ChatGPT35(n=2, max_tokens=1024, system_role_play=chatgpt35_system_role_play)
 
 # domain root
 @app.route('/')
