@@ -1,3 +1,6 @@
 Flask==2.2.2
 line-bot-sdk
 openai
+urllib3==1.26.6
+beautifulsoup4
+python-dotenv
